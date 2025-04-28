@@ -186,7 +186,7 @@ import subprocess
 from pyngrok import ngrok
 
 # Ngrok authentication
-ngrok.set_auth_token("YOUR_NGROK_AUTHTOKEN")
+ngrok.set_auth_token("2wH05EEhItGgdwSl5jhyIEPHrZL_86whmgMYVjixqNPGTDNbs")
 
 # Function to run Streamlit app
 def run():
