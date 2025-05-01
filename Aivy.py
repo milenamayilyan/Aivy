@@ -144,38 +144,20 @@ if st.session_state.user is not None:
         else:
             st.markdown(f"<div class='{role_class}'>{entry['text']}</div>", unsafe_allow_html=True)
 
-    # 📸 Image Upload and Chat Input Section
-    if st.session_state.show_upload:
-        col_a, col_b = st.columns(2)
-        with col_a:
-            photo = st.file_uploader("Upload Photo", type=["jpg", "jpeg", "png"], key="photo_uploader")
-        with col_b:
-            file = st.file_uploader("Upload File", type=["pdf", "docx", "txt"], key="file_uploader")
+# 📥 Chat Input Section (Cleaned and Expanded)
+st.markdown('<div class="fixed-chat-input">', unsafe_allow_html=True)
+col1, _ = st.columns([10, 0.0001])  # Make input bar wider by reducing second column
 
-        for item in [(photo, "📸"), (file, "📄")]:
-            if item[0]:
-                st.session_state.chat_history[selected_subject].append({
-                    "role": "user", "text": f"{item[1]} Uploaded: {item[0].name}",
-                    "file": item[0].getvalue(), "filename": item[0].name
-                })
-                st.success(f"{item[0].name} uploaded!")
-                st.session_state.show_upload = False
-                st.rerun()
+with col1:
+    user_input = st.chat_input("Ask Aivy something...")  # Chat input bar
 
-    st.markdown('<div class="fixed-chat-input">', unsafe_allow_html=True)
-    col1, col2 = st.columns([9, 1])
-    with col1:
-        user_input = st.chat_input("Ask Aivy something...")
-    with col2:
-        if st.button("➕", key="upload_toggle"):
-            st.session_state.show_upload = not st.session_state.show_upload
-    st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
-    if user_input:
-        st.session_state.chat_history[selected_subject].append({"role": "user", "text": user_input})
-        reply = generate_reply(user_input)
-        st.session_state.chat_history[selected_subject].append({"role": "aivy", "text": reply})
-        st.rerun()
+if user_input:
+    st.session_state.chat_history[selected_subject].append({"role": "user", "text": user_input})
+    reply = generate_reply(user_input)
+    st.session_state.chat_history[selected_subject].append({"role": "aivy", "text": reply})
+    st.rerun()
 
 else:
     st.error("Please login first to use Aivy.")
