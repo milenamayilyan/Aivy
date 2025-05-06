@@ -58,7 +58,7 @@ def login_user(email, password):
 # 🤖 Generate AI response
 def generate_reply(user_input):
     response = client.chat.completions.create(
-        model="gpt-4-turbo",
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a helpful AI study assistant."},
             {"role": "user", "content": user_input}
