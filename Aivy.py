@@ -63,7 +63,6 @@ def generate_reply(user_input):
             {"role": "user", "content": user_input}
         ],
         temperature=0.7,
-        max_tokens=200
     )
     return response.choices[0].message.content.strip()
 
