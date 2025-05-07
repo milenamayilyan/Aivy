@@ -176,7 +176,6 @@ time.sleep(5)
 
 # Create ngrok tunnel
 try:
-    # Use `addr` instead of `port`
     public_url = ngrok.connect(addr="8501", proto="http")
     print(f"🌐 Your app is live at: {public_url}")
 except Exception as e:
