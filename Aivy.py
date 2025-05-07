@@ -67,7 +67,7 @@ def generate_reply(user_input):
     return response.choices[0].message.content.strip()
 
 # 🛠️ Initialize Session State
-for key, default in [("user", None), ("guest", False), ("subjects", ["General"]), ("show_upload", False)]:
+for key, default in [("user", None), ("guest", False), ("subjects", ["General"])]:
     if key not in st.session_state:
         st.session_state[key] = default
 if "chat_history" not in st.session_state:
