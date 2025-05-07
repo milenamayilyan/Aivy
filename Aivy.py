@@ -137,20 +137,20 @@ if st.session_state.user is not None:
         role_class = "user-msg" if entry["role"] == "user" else "aivy-msg"
         st.markdown(f"<div class='{role_class}'>{entry['text']}</div>", unsafe_allow_html=True)
 
-# 📥 Chat Input Section
-st.markdown('<div class="fixed-chat-input">', unsafe_allow_html=True)
-col1, _ = st.columns([10, 0.0001])  # Make input bar wider by reducing second column
-
-with col1:
-    user_input = st.chat_input("Ask Aivy something...")  # Chat input bar
-
-st.markdown('</div>', unsafe_allow_html=True)
-
-if user_input:
-    st.session_state.chat_history[selected_subject].append({"role": "user", "text": user_input})
-    reply = generate_reply(user_input)
-    st.session_state.chat_history[selected_subject].append({"role": "aivy", "text": reply})
-    st.rerun()
+    # 📥 Chat Input Section
+    st.markdown('<div class="fixed-chat-input">', unsafe_allow_html=True)
+    col1, _ = st.columns([10, 0.0001])  # Make input bar wider by reducing second column
+    
+    with col1:
+        user_input = st.chat_input("Ask Aivy something...")  # Chat input bar
+    
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    if user_input:
+        st.session_state.chat_history[selected_subject].append({"role": "user", "text": user_input})
+        reply = generate_reply(user_input)
+        st.session_state.chat_history[selected_subject].append({"role": "aivy", "text": reply})
+        st.rerun()
 
 else:
     st.error("Please login first to use Aivy.")
