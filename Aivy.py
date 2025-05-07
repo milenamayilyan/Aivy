@@ -135,12 +135,7 @@ if st.session_state.user is not None:
 
     for entry in st.session_state.chat_history[selected_subject]:
         role_class = "user-msg" if entry["role"] == "user" else "aivy-msg"
-        if "file" in entry:
-            b64 = base64.b64encode(entry["file"]).decode()
-            href = f'<a href="data:application/octet-stream;base64,{b64}" download="{entry["filename"]}">📄 {entry["filename"]}</a>'
-            st.markdown(f"<div class='{role_class}'>{href}</div>", unsafe_allow_html=True)
-        else:
-            st.markdown(f"<div class='{role_class}'>{entry['text']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='{role_class}'>{entry['text']}</div>", unsafe_allow_html=True)
 
 # 📥 Chat Input Section (Cleaned and Expanded)
 st.markdown('<div class="fixed-chat-input">', unsafe_allow_html=True)
