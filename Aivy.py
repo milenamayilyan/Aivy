@@ -137,7 +137,7 @@ if st.session_state.user is not None:
         role_class = "user-msg" if entry["role"] == "user" else "aivy-msg"
         st.markdown(f"<div class='{role_class}'>{entry['text']}</div>", unsafe_allow_html=True)
 
-# 📥 Chat Input Section (Cleaned and Expanded)
+# 📥 Chat Input Section
 st.markdown('<div class="fixed-chat-input">', unsafe_allow_html=True)
 col1, _ = st.columns([10, 0.0001])  # Make input bar wider by reducing second column
 
