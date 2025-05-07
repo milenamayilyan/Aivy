@@ -5,7 +5,6 @@ import streamlit as st
 from openai import OpenAI
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
-import base64
 import os
 import re
 from firebase_admin import exceptions as firebase_exceptions
